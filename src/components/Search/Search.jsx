@@ -1,8 +1,12 @@
 import './Search.css';
-const Search = () => {
+const Search = ({ setSearchText }) => {
   return (
     <div className="width-100 search-container">
-      <input className="search-bar" type="text" />
+      <input
+        onChange={(e) => setSearchText(e.target.value)}
+        className="search-bar"
+        type="text"
+      />
     </div>
   );
 };

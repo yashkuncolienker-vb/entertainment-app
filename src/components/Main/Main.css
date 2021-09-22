@@ -1,5 +1,6 @@
 .main-container {
   position: relative;
+  min-height: 100px;
 }
 
 .toggle-btn {

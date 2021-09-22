@@ -11,6 +11,7 @@ const Main = () => {
   const [data, setData] = useState(dummyData.data);
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   const songObj = {
     data,
@@ -34,15 +35,24 @@ const Main = () => {
       [e.target.name]: e.target.value.trim(),
     });
   };
-
   return loggedUser ? (
     <div className="width-100">
       <Navbar loggedUser={loggedUser} />
-      <Search />
+      <Search setSearchText={setSearchText} />
       <div className="main-container">
-        {data.map((info, key) => (
-          <Song data={info} key={key + 1} id={key} songObj={songObj} />
-        ))}
+        {data
+          .filter((item) => {
+            const ctdn =
+              searchText === '' ||
+              item.title.toLowerCase().startsWith(searchText.toLowerCase());
+            if (ctdn) {
+              return true;
+            }
+            return false;
+          })
+          .map((info, key) => (
+            <Song data={info} key={key + 1} songObj={songObj} />
+          ))}
         <button className="toggle-btn" onClick={handleClickAdd}>
           {showForm ? '-' : '+'}
         </button>

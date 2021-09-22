@@ -4,7 +4,7 @@ import { useState } from 'react';
 const Song = ({ data, songObj }) => {
   const [like, setLike] = useState(false);
 
-  const handleClick = () => {
+  const handleDelete = () => {
     const fData = songObj.data.filter(
       (d) => d.id.toString() !== data.id.toString()
     );
@@ -13,7 +13,7 @@ const Song = ({ data, songObj }) => {
 
   const handleLike = () => {
     if (!like) {
-      const fData = { like: data.like++, ...data };
+      const fData = { ...data, like: Number(data.like) + 1 };
       songObj.setData(
         songObj.data.map((d) =>
           d.id.toString() === data.id.toString() ? fData : d
@@ -21,7 +21,7 @@ const Song = ({ data, songObj }) => {
       );
       setLike(true);
     } else {
-      const fData = { like: data.like--, ...data };
+      const fData = { ...data, like: Number(data.like) - 1 };
       songObj.setData(
         songObj.data.map((d) =>
           d.id.toString() === data.id.toString() ? fData : d
@@ -50,7 +50,7 @@ const Song = ({ data, songObj }) => {
       <div className="drop-down-container">
         <p>&darr;</p>
         <div className="drop-down">
-          <p onClick={handleClick} className="btn">
+          <p onClick={handleDelete} className="btn">
             Delete Song
           </p>
         </div>

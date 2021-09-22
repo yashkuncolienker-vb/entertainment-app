@@ -12,8 +12,10 @@ const Navbar = ({ loggedUser }) => {
     <div className="width-100">
       <nav className="navbar">
         <h1>Entertainment App</h1>
-        <h3>Welcome {loggedUser}</h3>
-        <button onClick={handleClick}>Logout</button>
+        <h3>
+          Welcome {loggedUser}
+          <button onClick={handleClick}>Logout</button>
+        </h3>
       </nav>
     </div>
   );
