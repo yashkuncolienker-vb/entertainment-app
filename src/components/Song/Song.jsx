@@ -1,16 +1,42 @@
 import './Song.css';
+import { useState } from 'react';
+
 const Song = ({ data, songObj }) => {
+  const [like, setLike] = useState(false);
+
   const handleClick = () => {
     const fData = songObj.data.filter(
       (d) => d.id.toString() !== data.id.toString()
     );
     songObj.setData(fData);
   };
+
+  const handleLike = () => {
+    if (!like) {
+      const fData = { like: data.like++, ...data };
+      songObj.setData(
+        songObj.data.map((d) =>
+          d.id.toString() === data.id.toString() ? fData : d
+        )
+      );
+      setLike(true);
+    } else {
+      const fData = { like: data.like--, ...data };
+      songObj.setData(
+        songObj.data.map((d) =>
+          d.id.toString() === data.id.toString() ? fData : d
+        )
+      );
+      setLike(false);
+    }
+  };
   return (
     <div className="song-container">
       <div>
         {data.like}
-        <button style={{ width: '30px' }}>Like</button>
+        <button onClick={handleLike} className="btn">
+          Like
+        </button>
       </div>
       <div>
         <div>{data.title}</div>
@@ -24,7 +50,9 @@ const Song = ({ data, songObj }) => {
       <div className="drop-down-container">
         <p>&darr;</p>
         <div className="drop-down">
-          <p onClick={handleClick}>Delete Song</p>
+          <p onClick={handleClick} className="btn">
+            Delete Song
+          </p>
         </div>
       </div>
     </div>

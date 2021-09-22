@@ -19,3 +19,7 @@
 .drop-down-container:hover .drop-down {
   visibility: visible;
 }
+
+.btn {
+  padding: 10px;
+}

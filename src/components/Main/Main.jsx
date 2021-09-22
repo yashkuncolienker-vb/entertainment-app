@@ -4,12 +4,14 @@ import { useState } from 'react';
 import Song from '../Song/Song';
 import Navbar from '../Navbar/Navbar';
 import Search from '../Search/Search';
+import './Main.css';
 
 const Main = () => {
   const loggedUser = localStorage.getItem('loggedUser');
   const [data, setData] = useState(dummyData.data);
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
+
   const songObj = {
     data,
     setData,
@@ -21,7 +23,10 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setData([...data, { id: data.length + 1, like: 0, ...formData }]);
+    setData([
+      ...data,
+      { id: Number(data[data.length - 1].id) + 1, like: 0, ...formData },
+    ]);
   };
   const handleChange = (e) => {
     setFormData({
@@ -34,13 +39,16 @@ const Main = () => {
     <div className="width-100">
       <Navbar loggedUser={loggedUser} />
       <Search />
-      <div>
+      <div className="main-container">
         {data.map((info, key) => (
-          <Song data={info} key={key + 1} songObj={songObj} />
+          <Song data={info} key={key + 1} id={key} songObj={songObj} />
         ))}
+        <button className="toggle-btn" onClick={handleClickAdd}>
+          {showForm ? '-' : '+'}
+        </button>
       </div>
       {showForm && (
-        <form onSubmit={handleSubmit}>
+        <form className="add-form" onSubmit={handleSubmit}>
           <label>
             Title <input type="text" onChange={handleChange} name="title" />
           </label>
@@ -54,7 +62,6 @@ const Main = () => {
           <button>Add</button>
         </form>
       )}
-      <button onClick={handleClickAdd}>{showForm ? '-' : '+'}</button>
     </div>
   ) : (
     <Redirect to="/" />

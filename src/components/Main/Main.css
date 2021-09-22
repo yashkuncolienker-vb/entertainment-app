@@ -1,0 +1,14 @@
+.main-container {
+  position: relative;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 2rem;
+  padding: 10px;
+  bottom: -1rem;
+}
+
+.add-form {
+  margin-left: 1rem;
+}
