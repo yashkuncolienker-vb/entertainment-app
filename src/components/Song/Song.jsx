@@ -32,27 +32,35 @@ const Song = ({ data, songObj }) => {
   };
   return (
     <div className="song-container">
-      <div>
-        {data.like}
-        <button onClick={handleLike} className="btn">
-          Like
-        </button>
+      <div className="details-container">
+        <div className="like-container">
+          <h5>{data.like}</h5>
+          <button onClick={handleLike} className="btn">
+            <i
+              className="fa fa-thumbs-up"
+              style={{ fontSize: '48px', color: like ? 'blue' : 'gray' }}
+            ></i>
+          </button>
+        </div>
+        <div>
+          <div className="title">{data.title}</div>
+          <div className="subtitle">{data.subtitle}</div>
+        </div>
       </div>
-      <div>
-        <div>{data.title}</div>
-        <div>{data.subtitle}</div>
-      </div>
-      <div>
-        <audio controls>
+      <div className="audio-container">
+        <audio controls className="audio-style">
           <source src={data.media} type="audio/mp3" />
         </audio>
-      </div>
-      <div className="drop-down-container">
-        <p>&darr;</p>
-        <div className="drop-down">
-          <p onClick={handleDelete} className="btn">
-            Delete Song
-          </p>
+        <div className="drop-down-container">
+          <i
+            className="fa fa-angle-down"
+            aria-hidden="true"
+            style={{ fontSize: '48px' }}
+          ></i>
+
+          <div className="drop-down">
+            <div onClick={handleDelete}>Delete</div>
+          </div>
         </div>
       </div>
     </div>

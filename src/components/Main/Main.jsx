@@ -53,10 +53,10 @@ const Main = () => {
           .map((info, key) => (
             <Song data={info} key={key + 1} songObj={songObj} />
           ))}
-        <button className="toggle-btn" onClick={handleClickAdd}>
-          {showForm ? '-' : '+'}
-        </button>
       </div>
+      <button className="toggle-btn btn-1" onClick={handleClickAdd}>
+        {showForm ? '-' : '+'}
+      </button>
       {showForm && (
         <form className="add-form" onSubmit={handleSubmit}>
           <label>
@@ -69,7 +69,7 @@ const Main = () => {
           <label>
             Media <input type="text" onChange={handleChange} name="media" />
           </label>
-          <button>Add</button>
+          <button className="btn-1">Add</button>
         </form>
       )}
     </div>

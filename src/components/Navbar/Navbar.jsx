@@ -13,8 +13,10 @@ const Navbar = ({ loggedUser }) => {
       <nav className="navbar">
         <h1>Entertainment App</h1>
         <h3>
-          Welcome {loggedUser}
-          <button onClick={handleClick}>Logout</button>
+          Welcome {loggedUser.toUpperCase()}
+          <button className="logout-btn" onClick={handleClick}>
+            Logout
+          </button>
         </h3>
       </nav>
     </div>
