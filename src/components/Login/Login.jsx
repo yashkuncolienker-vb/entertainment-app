@@ -4,7 +4,7 @@ const Login = () => {
   const userLogin = useRef(null);
   const history = useHistory();
 
-  const formControl = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     const fname = userLogin.current.children[0].value.toLowerCase();
     const lname = userLogin.current.children[1].value.toLowerCase();
@@ -22,7 +22,7 @@ const Login = () => {
       <form ref={userLogin}>
         <input type="text" placeholder="FirstName" />
         <input type="text" placeholder="LastName" />
-        <button onClick={formControl}>Login</button>
+        <button onClick={handleClick}>Login</button>
       </form>
     </div>
   );
