@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import './Navbar.css';
 
 const Navbar = ({ loggedUser }) => {
   const history = useHistory();
@@ -8,9 +9,10 @@ const Navbar = ({ loggedUser }) => {
   };
 
   return (
-    <div>
-      <nav>
-        <h1>{loggedUser}</h1>
+    <div className="width-100">
+      <nav className="navbar">
+        <h1>Entertainment App</h1>
+        <h3>Welcome {loggedUser}</h3>
         <button onClick={handleClick}>Logout</button>
       </nav>
     </div>

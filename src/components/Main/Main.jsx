@@ -3,12 +3,17 @@ import dummyData from './dummydata.json';
 import { useState } from 'react';
 import Song from '../Song/Song';
 import Navbar from '../Navbar/Navbar';
+import Search from '../Search/Search';
 
 const Main = () => {
   const loggedUser = localStorage.getItem('loggedUser');
   const [data, setData] = useState(dummyData.data);
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
+  const songObj = {
+    data,
+    setData,
+  };
 
   const handleClickAdd = () => {
     setShowForm(!showForm);
@@ -26,11 +31,12 @@ const Main = () => {
   };
 
   return loggedUser ? (
-    <div>
+    <div className="width-100">
       <Navbar loggedUser={loggedUser} />
+      <Search />
       <div>
         {data.map((info, key) => (
-          <Song data={info} key={key} />
+          <Song data={info} key={key + 1} songObj={songObj} />
         ))}
       </div>
       {showForm && (

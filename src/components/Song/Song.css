@@ -1,0 +1,21 @@
+.song-container {
+  background-color: red;
+  margin: 1rem;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.song-container > div {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.drop-down {
+  visibility: hidden;
+  background-color: white;
+  cursor: pointer;
+}
+
+.drop-down-container:hover .drop-down {
+  visibility: visible;
+}
