@@ -24,7 +24,7 @@ const Song = ({ data, songObj, likesObj }) => {
     <div className="song-container">
       <div className="details-container">
         <div className="like-container">
-          <h5>{data.like}</h5>
+          <h5 style={{ color: like ? 'blue' : 'gray' }}>{data.like}</h5>
           <button onClick={handleLike} className="btn">
             <i
               className="fa fa-thumbs-up"
