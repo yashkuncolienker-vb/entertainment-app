@@ -11,21 +11,28 @@ const Main = () => {
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [searchText, setSearchText] = useState('');
-
+  const [likes, setLikes] = useState([]);
+  const likesObj = {
+    likes,
+    setLikes,
+  };
   const songObj = {
     data,
     setData,
   };
-
-  const handleClickAdd = () => {
+  const handleExpand = () => {
     setShowForm(!showForm);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.title || !formData.subtitle || !formData.media) {
+      alert('Please, fill all details');
+      return;
+    }
     setData([
       ...data,
-      { id: Number(data[data.length - 1].id) + 1, like: 0, ...formData },
+      { id: data[data.length - 1].id + 1, like: 0, ...formData },
     ]);
   };
   const handleChange = (e) => {
@@ -35,7 +42,7 @@ const Main = () => {
     });
   };
   return (
-    <div className="width-100">
+    <>
       <Navbar loggedUser={loggedUser} />
       <Search setSearchText={setSearchText} />
       <div className="main-container">
@@ -50,28 +57,35 @@ const Main = () => {
             return false;
           })
           .map((info, key) => (
-            <Song data={info} key={key + 1} songObj={songObj} />
+            <Song
+              data={info}
+              key={key + 1}
+              songObj={songObj}
+              likesObj={likesObj}
+            />
           ))}
       </div>
-      <button className="toggle-btn btn-1" onClick={handleClickAdd}>
-        {showForm ? '-' : '+'}
-      </button>
-      {showForm && (
-        <form className="add-form" onSubmit={handleSubmit}>
-          <label>
-            Title <input type="text" onChange={handleChange} name="title" />
-          </label>
-          <label>
-            Subtitle{' '}
-            <input type="text" onChange={handleChange} name="subtitle" />
-          </label>
-          <label>
-            Media <input type="text" onChange={handleChange} name="media" />
-          </label>
-          <button className="btn-1">Add</button>
-        </form>
-      )}
-    </div>
+      <div className="form-container">
+        <button className="toggle-btn btn-1 hvr-btn" onClick={handleExpand}>
+          {showForm ? '-' : '+'}
+        </button>
+        {showForm && (
+          <form className="add-form" onSubmit={handleSubmit}>
+            <label>
+              Title <input type="text" onChange={handleChange} name="title" />
+            </label>
+            <label>
+              Subtitle{' '}
+              <input type="text" onChange={handleChange} name="subtitle" />
+            </label>
+            <label>
+              Media <input type="text" onChange={handleChange} name="media" />
+            </label>
+            <button className="btn-1">Add</button>
+          </form>
+        )}
+      </div>
+    </>
   );
 };
 

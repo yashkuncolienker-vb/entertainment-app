@@ -1,7 +1,7 @@
 import './Search.css';
 const Search = ({ setSearchText }) => {
   return (
-    <div className="width-100">
+    <>
       <div className="search-container">
         <input
           onChange={(e) => setSearchText(e.target.value)}
@@ -9,7 +9,7 @@ const Search = ({ setSearchText }) => {
           type="text"
         />
       </div>
-    </div>
+    </>
   );
 };
 

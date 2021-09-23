@@ -1,33 +1,23 @@
 import './Song.css';
-import { useState } from 'react';
 
-const Song = ({ data, songObj }) => {
-  const [like, setLike] = useState(false);
+const Song = ({ data, songObj, likesObj }) => {
+  const like = likesObj.likes.includes(data.id);
 
   const handleDelete = () => {
-    const fData = songObj.data.filter(
-      (d) => d.id.toString() !== data.id.toString()
-    );
+    const fData = songObj.data.filter((d) => d.id !== data.id);
     songObj.setData(fData);
+    likesObj.setLikes(likesObj.likes.filter((id) => id !== data.id));
   };
 
   const handleLike = () => {
     if (!like) {
-      const fData = { ...data, like: Number(data.like) + 1 };
-      songObj.setData(
-        songObj.data.map((d) =>
-          d.id.toString() === data.id.toString() ? fData : d
-        )
-      );
-      setLike(true);
+      const fData = { ...data, like: data.like + 1 };
+      songObj.setData(songObj.data.map((d) => (d.id === data.id ? fData : d)));
+      likesObj.setLikes([...likesObj.likes, data.id]);
     } else {
-      const fData = { ...data, like: Number(data.like) - 1 };
-      songObj.setData(
-        songObj.data.map((d) =>
-          d.id.toString() === data.id.toString() ? fData : d
-        )
-      );
-      setLike(false);
+      const fData = { ...data, like: data.like - 1 };
+      songObj.setData(songObj.data.map((d) => (d.id === data.id ? fData : d)));
+      likesObj.setLikes(likesObj.likes.filter((d) => d !== data.id));
     }
   };
   return (
@@ -38,11 +28,11 @@ const Song = ({ data, songObj }) => {
           <button onClick={handleLike} className="btn">
             <i
               className="fa fa-thumbs-up"
-              style={{ fontSize: '48px', color: like ? 'blue' : 'gray' }}
+              style={{ color: like ? 'blue' : 'gray' }}
             ></i>
           </button>
         </div>
-        <div>
+        <div className="title-container">
           <div className="title">{data.title}</div>
           <div className="subtitle">{data.subtitle}</div>
         </div>
