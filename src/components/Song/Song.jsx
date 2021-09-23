@@ -1,8 +1,7 @@
 import './Song.css';
-import { useState } from 'react';
 
-const Song = ({ data, songObj }) => {
-  const [like, setLike] = useState(false);
+const Song = ({ data, songObj, likesObj }) => {
+  const like = likesObj.likes.includes(data.id);
 
   const handleDelete = () => {
     const fData = songObj.data.filter(
@@ -19,7 +18,7 @@ const Song = ({ data, songObj }) => {
           d.id.toString() === data.id.toString() ? fData : d
         )
       );
-      setLike(true);
+      likesObj.setLikes([...likesObj.likes, data.id]);
     } else {
       const fData = { ...data, like: Number(data.like) - 1 };
       songObj.setData(
@@ -27,7 +26,7 @@ const Song = ({ data, songObj }) => {
           d.id.toString() === data.id.toString() ? fData : d
         )
       );
-      setLike(false);
+      likesObj.setLikes(likesObj.likes.filter((d) => d !== data.id));
     }
   };
   return (

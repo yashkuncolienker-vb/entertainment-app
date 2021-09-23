@@ -11,7 +11,11 @@ const Main = () => {
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [searchText, setSearchText] = useState('');
-
+  const [likes, setLikes] = useState([]);
+  const likesObj = {
+    likes,
+    setLikes,
+  };
   const songObj = {
     data,
     setData,
@@ -50,7 +54,12 @@ const Main = () => {
             return false;
           })
           .map((info, key) => (
-            <Song data={info} key={key + 1} songObj={songObj} />
+            <Song
+              data={info}
+              key={key + 1}
+              songObj={songObj}
+              likesObj={likesObj}
+            />
           ))}
       </div>
       <div className="form-container">
