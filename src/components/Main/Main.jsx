@@ -30,6 +30,7 @@ const Main = () => {
       alert('Please, fill all details');
       return;
     }
+    setShowForm(!showForm);
     setData([
       ...data,
       { id: data[data.length - 1].id + 1, like: 0, ...formData },
