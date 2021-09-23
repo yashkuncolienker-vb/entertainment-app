@@ -45,9 +45,7 @@ const Main = () => {
   return (
     <>
       <Navbar loggedUser={loggedUser} />
-
       <Search setSearchText={setSearchText} />
-
       <div className="main-container">
         {data
           .filter((item) => {
@@ -68,12 +66,10 @@ const Main = () => {
             />
           ))}
       </div>
-
       <div className="form-container">
         <button className="toggle-btn btn-1 hvr-btn" onClick={handleExpand}>
           {showForm ? '-' : '+'}
         </button>
-
         {showForm && (
           <form className="add-form" onSubmit={handleSubmit}>
             <label>

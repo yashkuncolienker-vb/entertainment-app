@@ -8,6 +8,9 @@ const Song = ({ data, songObj, likesObj }) => {
       (d) => d.id.toString() !== data.id.toString()
     );
     songObj.setData(fData);
+    likesObj.setLikes(
+      likesObj.likes.filter((id) => id.toString() !== data.id.toString())
+    );
   };
 
   const handleLike = () => {

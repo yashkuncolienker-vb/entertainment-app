@@ -13,10 +13,6 @@
   align-items: center;
   background: linear-gradient(to right, #7b4397, #dc2430);
 }
-
-.width-100 {
-  width: 100%;
-}
 button,
 input[type='text'] {
   background: none;
