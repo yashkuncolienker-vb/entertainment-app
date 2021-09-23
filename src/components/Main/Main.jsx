@@ -1,4 +1,3 @@
-import { Redirect } from 'react-router';
 import dummyData from './dummydata.json';
 import { useState } from 'react';
 import Song from '../Song/Song';
@@ -7,7 +6,7 @@ import Search from '../Search/Search';
 import './Main.css';
 
 const Main = () => {
-  const loggedUser = localStorage.getItem('loggedUser');
+  const loggedUser = 'Yash Rk';
   const [data, setData] = useState(dummyData.data);
   const [formData, setFormData] = useState({});
   const [showForm, setShowForm] = useState(false);
@@ -35,7 +34,7 @@ const Main = () => {
       [e.target.name]: e.target.value.trim(),
     });
   };
-  return loggedUser ? (
+  return (
     <div className="width-100">
       <Navbar loggedUser={loggedUser} />
       <Search setSearchText={setSearchText} />
@@ -73,8 +72,6 @@ const Main = () => {
         </form>
       )}
     </div>
-  ) : (
-    <Redirect to="/" />
   );
 };
 

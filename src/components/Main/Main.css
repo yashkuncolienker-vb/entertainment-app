@@ -5,6 +5,7 @@
 div.main-container {
   overflow-y: scroll;
   max-height: 60vh;
+  min-height: 60vh;
 }
 
 .btn-1 {
@@ -13,9 +14,6 @@ div.main-container {
 }
 
 .toggle-btn {
-  position: absolute;
-  right: 2rem;
-  bottom: 4rem;
   min-height: 60px;
   border-radius: 50%;
   background-color: blue;
