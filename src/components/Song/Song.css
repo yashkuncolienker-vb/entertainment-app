@@ -111,4 +111,8 @@ audio {
   .title-container {
     margin-top: 10px;
   }
+  audio {
+    display: block;
+    width: 25rem;
+  }
 }
