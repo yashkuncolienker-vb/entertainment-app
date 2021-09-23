@@ -42,7 +42,7 @@ const Song = ({ data, songObj }) => {
             ></i>
           </button>
         </div>
-        <div>
+        <div className="title-container">
           <div className="title">{data.title}</div>
           <div className="subtitle">{data.subtitle}</div>
         </div>

@@ -1,11 +1,16 @@
-.main-container {
-  min-height: 100px;
+.main-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
 }
 
 div.main-container {
   overflow-y: scroll;
-  max-height: 60vh;
-  min-height: 60vh;
+  max-height: 50vh;
+  min-height: 200px;
 }
 
 .btn-1 {
@@ -18,12 +23,21 @@ div.main-container {
   border-radius: 50%;
   background-color: blue;
   font-size: 3rem;
+  margin: 8px;
   font-family: 'Josefin Sans', sans-serif;
+  display: inline-block;
 }
 
 .add-form {
   margin-left: 1rem;
   font-family: 'Josefin Sans', sans-serif;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to right, #7b4397, #dc2430);
+  box-shadow: inset 0 0 5px white;
 }
 
 form button {
@@ -31,8 +45,23 @@ form button {
   border-radius: 15px;
   background-color: rgb(14, 175, 14);
   font-size: 1rem;
+  display: block;
+  margin-left: auto;
+}
+form label {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 form label input[type='text'] {
   background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.form-container {
+  position: relative;
 }

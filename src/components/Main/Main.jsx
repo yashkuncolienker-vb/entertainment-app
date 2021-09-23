@@ -53,24 +53,29 @@ const Main = () => {
             <Song data={info} key={key + 1} songObj={songObj} />
           ))}
       </div>
-      <button className="toggle-btn btn-1" onClick={handleClickAdd}>
-        {showForm ? '-' : '+'}
-      </button>
-      {showForm && (
-        <form className="add-form" onSubmit={handleSubmit}>
-          <label>
-            Title <input type="text" onChange={handleChange} name="title" />
-          </label>
-          <label>
-            Subtitle{' '}
-            <input type="text" onChange={handleChange} name="subtitle" />
-          </label>
-          <label>
-            Media <input type="text" onChange={handleChange} name="media" />
-          </label>
-          <button className="btn-1">Add</button>
-        </form>
-      )}
+      <div className="form-container">
+        <button className="toggle-btn btn-1" onClick={handleClickAdd}>
+          {showForm ? '-' : '+'}
+        </button>
+        {showForm && (
+          <form className="add-form" onSubmit={handleSubmit}>
+            <label>
+              Title <input type="text" onChange={handleChange} name="title" />
+            </label>
+            <br />
+            <label>
+              Subtitle{' '}
+              <input type="text" onChange={handleChange} name="subtitle" />
+            </label>
+            <br />
+            <label>
+              Media <input type="text" onChange={handleChange} name="media" />
+            </label>
+            <br />
+            <button className="btn-1">Add</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };
