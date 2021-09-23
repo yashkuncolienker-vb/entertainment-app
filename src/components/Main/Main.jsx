@@ -45,25 +45,27 @@ const Main = () => {
     <>
       <Navbar loggedUser={loggedUser} />
       <Search setSearchText={setSearchText} />
-      <div className="main-container">
-        {data
-          .filter((item) => {
-            const ctdn =
-              searchText === '' ||
-              item.title.toLowerCase().startsWith(searchText.toLowerCase());
-            if (ctdn) {
-              return true;
-            }
-            return false;
-          })
-          .map((info, key) => (
-            <Song
-              data={info}
-              key={key + 1}
-              songObj={songObj}
-              likesObj={likesObj}
-            />
-          ))}
+      <div>
+        <div className="main-container">
+          {data
+            .filter((item) => {
+              const ctdn =
+                searchText === '' ||
+                item.title.toLowerCase().startsWith(searchText.toLowerCase());
+              if (ctdn) {
+                return true;
+              }
+              return false;
+            })
+            .map((info, key) => (
+              <Song
+                data={info}
+                key={key + 1}
+                songObj={songObj}
+                likesObj={likesObj}
+              />
+            ))}
+        </div>
       </div>
       <div className="form-container">
         <button className="toggle-btn btn-1 hvr-btn" onClick={handleExpand}>
