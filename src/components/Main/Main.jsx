@@ -75,7 +75,7 @@ const Main = () => {
               Title <input type="text" onChange={handleChange} name="title" />
             </label>
             <label>
-              Subtitle{' '}
+              Subtitle
               <input type="text" onChange={handleChange} name="subtitle" />
             </label>
             <label>
