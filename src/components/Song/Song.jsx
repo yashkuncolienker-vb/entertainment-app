@@ -4,31 +4,19 @@ const Song = ({ data, songObj, likesObj }) => {
   const like = likesObj.likes.includes(data.id);
 
   const handleDelete = () => {
-    const fData = songObj.data.filter(
-      (d) => d.id.toString() !== data.id.toString()
-    );
+    const fData = songObj.data.filter((d) => d.id !== data.id);
     songObj.setData(fData);
-    likesObj.setLikes(
-      likesObj.likes.filter((id) => id.toString() !== data.id.toString())
-    );
+    likesObj.setLikes(likesObj.likes.filter((id) => id !== data.id));
   };
 
   const handleLike = () => {
     if (!like) {
-      const fData = { ...data, like: Number(data.like) + 1 };
-      songObj.setData(
-        songObj.data.map((d) =>
-          d.id.toString() === data.id.toString() ? fData : d
-        )
-      );
+      const fData = { ...data, like: data.like + 1 };
+      songObj.setData(songObj.data.map((d) => (d.id === data.id ? fData : d)));
       likesObj.setLikes([...likesObj.likes, data.id]);
     } else {
-      const fData = { ...data, like: Number(data.like) - 1 };
-      songObj.setData(
-        songObj.data.map((d) =>
-          d.id.toString() === data.id.toString() ? fData : d
-        )
-      );
+      const fData = { ...data, like: data.like - 1 };
+      songObj.setData(songObj.data.map((d) => (d.id === data.id ? fData : d)));
       likesObj.setLikes(likesObj.likes.filter((d) => d !== data.id));
     }
   };

@@ -20,7 +20,6 @@ const Main = () => {
     data,
     setData,
   };
-
   const handleExpand = () => {
     setShowForm(!showForm);
   };
@@ -33,7 +32,7 @@ const Main = () => {
     }
     setData([
       ...data,
-      { id: Number(data[data.length - 1].id) + 1, like: 0, ...formData },
+      { id: data[data.length - 1].id + 1, like: 0, ...formData },
     ]);
   };
   const handleChange = (e) => {
