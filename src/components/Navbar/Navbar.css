@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,700;1,400&display=swap');
 .navbar {
   display: flex;
   flex-direction: row;
@@ -6,20 +5,8 @@
   justify-content: space-between;
   padding: 1rem;
   align-items: baseline;
-  font-family: 'Josefin Sans', sans-serif;
+  color: white;
 }
-
-button,
-input[type='text'] {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
-
 .logout-btn {
   margin: 0.5rem 1rem;
   font-size: 1rem;
@@ -27,23 +14,25 @@ input[type='text'] {
   border-radius: 15px;
   background-color: blue;
 }
-
-.logout-btn:hover {
-  transform: scale(0.9);
-  transition: transform 1s;
-}
-
 .navbar h1 {
   font-weight: 700;
-  color: white;
   font-size: 2.5rem;
 }
-
 .navbar h3 {
   font-weight: 400;
   font-size: 1.7rem;
-  color: white;
   font-style: italic;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 680px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar h3 {
+    flex-direction: column;
+    align-items: center;
+  }
 }

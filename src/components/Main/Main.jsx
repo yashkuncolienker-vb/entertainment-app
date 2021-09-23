@@ -21,12 +21,16 @@ const Main = () => {
     setData,
   };
 
-  const handleClickAdd = () => {
+  const handleExpand = () => {
     setShowForm(!showForm);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.title || !formData.subtitle || !formData.media) {
+      alert('Please, fill all details');
+      return;
+    }
     setData([
       ...data,
       { id: Number(data[data.length - 1].id) + 1, like: 0, ...formData },
@@ -39,9 +43,11 @@ const Main = () => {
     });
   };
   return (
-    <div className="width-100">
+    <>
       <Navbar loggedUser={loggedUser} />
+
       <Search setSearchText={setSearchText} />
+
       <div className="main-container">
         {data
           .filter((item) => {
@@ -62,30 +68,29 @@ const Main = () => {
             />
           ))}
       </div>
+
       <div className="form-container">
-        <button className="toggle-btn btn-1" onClick={handleClickAdd}>
+        <button className="toggle-btn btn-1 hvr-btn" onClick={handleExpand}>
           {showForm ? '-' : '+'}
         </button>
+
         {showForm && (
           <form className="add-form" onSubmit={handleSubmit}>
             <label>
               Title <input type="text" onChange={handleChange} name="title" />
             </label>
-            <br />
             <label>
               Subtitle{' '}
               <input type="text" onChange={handleChange} name="subtitle" />
             </label>
-            <br />
             <label>
               Media <input type="text" onChange={handleChange} name="media" />
             </label>
-            <br />
             <button className="btn-1">Add</button>
           </form>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

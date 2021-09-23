@@ -37,7 +37,7 @@ const Song = ({ data, songObj, likesObj }) => {
           <button onClick={handleLike} className="btn">
             <i
               className="fa fa-thumbs-up"
-              style={{ fontSize: '48px', color: like ? 'blue' : 'gray' }}
+              style={{ color: like ? 'blue' : 'gray' }}
             ></i>
           </button>
         </div>
